@@ -4,7 +4,9 @@ This is a peer-to-peer permissioned network built on the hyperledger/fabric code
 
 The Certificate Authority (CA) provides a number of certificate services to users of a blockchain. More specifically, these services relate to user enrollment, transactions invoked on the blockchain, and TLS-secured connections between users or components of the blockchain. 
 
-The read more about CA, please refer to the [hyperledger documentation](http://hyperledger-fabric.readthedocs.io/en/latest/). 
+Peer nodes keep a copy of all transaction records so that solution providers can query them locally.
+
+The read more about hyperledger, please refer to the [hyperledger documentation](http://hyperledger-fabric.readthedocs.io/en/latest/). 
 
 To better understand terms used in this demo, please refer to the [glossary](http://hyperledger-fabric.readthedocs.io/en/latest/glossary/).
 
@@ -156,7 +158,7 @@ $ docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID
 ## Test API using Postman
 
 Try a post method using the address: **localhost:5000/registrar**
-Click on "body", click on "raw", type in the following JSON string:
+Click on **body**, click on **raw**, type in the following JSON string:
 
 ```json
 {
@@ -167,7 +169,7 @@ Click on "body", click on "raw", type in the following JSON string:
 
 ## Download demo app
 
-Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under your $GOPATH
+Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under your *$GOPATH*
 ```
 $ cd <your folder>
 $ npm install
