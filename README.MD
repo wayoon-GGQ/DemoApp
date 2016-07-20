@@ -1,40 +1,39 @@
-# Overview
----
+# Demo overview
 
 This is a peer-to-peer permissioned network built on the hyperledger/fabric code from the Linux Foundation's Hyperledger Project.
 
 The Certificate Authority (CA) provides a number of certificate services to users of a blockchain. More specifically, these services relate to user enrollment, transactions invoked on the blockchain, and TLS-secured connections between users or components of the blockchain. 
 
-The read more about CA, please refer to the [hyperledger documentation](http://hyperledger-fabric.readthedocs.io/en/latest/) 
+The read more about CA, please refer to the [hyperledger documentation](http://hyperledger-fabric.readthedocs.io/en/latest/). 
 
 
-# Prerequisites
----
+## Prerequisites
 
 Make sure to have the following installed/configured on local machine. 
-Get [Vagrant (1.7.4 or later)](https://www.vagrantup.com/)
-Get [Virtualbox (5.0, not 5.1)](https://www.virtualbox.org/)
-Get [Go](https://golang.org/)
-Setup [$GOPATH environmental variables](https://github.com/golang/go/wiki/GOPATH)
+1. [Vagrant (1.7.4 or later)](https://www.vagrantup.com/)
+2. [Virtualbox (5.0, not 5.1)](https://www.virtualbox.org/)
+3. [Go](https://golang.org/)
+4. Setup [$GOPATH environmental variables](https://github.com/golang/go/wiki/GOPATH)
 
 
 ### Note to Windows users 
-If you are running Windows, before running any git clone commands, run the following command.
 
+If you are running Windows, before running any git clone commands, run the following commands:
+
+```
 git config --get core.autocrlf
 If core.autocrlf is set to true, you must set it to false by running
 
 git config --global core.autocrlf false
 If you continue with core.autocrlf set to true, the vagrant up command will fail with the error ./setup.sh: /bin/bash^M: bad interpreter: No such file or directory
+```
 
 
-
-# Set up chaincode
----
+## Set up chaincode
 
 First clone chaincode from [Github]() into a folder under $GOPATH/src/github.com
 
-Once this is done, run the following commands
+Once this is done, run the following commands:
 ```
 $ cd <to your chain-code path>
 $ mkdir vendor/github.com/hyperledger
@@ -43,10 +42,9 @@ $ git clone https://github.com/hyperledger/fabric.git
 ```
 
 
-# Next set up local hyperledger
----
+## Set up hyperledger
 
-Run the following commands
+Run the following commands:
 ```
 $ cd <gopath>
 $ cd src
@@ -55,17 +53,16 @@ $ cd github.com\hyperledger
 $ git clone https://github.com/hyperledger/fabric.git
 ```
 
-Open membersrvc.yaml under hyperledger/fabric/membersrvc
-Uncomment lines 115 and 116 so that the following lines are uncommented
+Open membersrvc.yaml under hyperledger/fabric/membersrvc, and uncomment lines 115 and 116 
 ```
-	vp0: 4 vp0_secret
-    vp1: 4 vp1_secret
+vp0: 4 vp0_secret
+vp1: 4 vp1_secret
 ```
 
-# Set up development environment
----
 
-## Start Vagrant
+## Set up development environment
+
+### Start Vagrant
 ```
 $ cd $GOPATH/src/github.com/hyperledger/fabric/devenv
 $ vagrant up
@@ -84,12 +81,12 @@ Once inside vagrant
 $ cd $GOPATH/src/github.com/hyperledger/fabric
 ```
 
-## Start up the CA
+### Start up the CA
 ```
 $ make membersrvc && membersrvc
 ```
 
-## Start up validating peers
+### Start up validating peers
 
 Open a new terminal (Terminal 2):
 ```
@@ -153,8 +150,7 @@ $ docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID
 
 
 
-# Test API using Postman
----
+## Test API using Postman
 
 Try a post method using the address: localhost:5000/registrar
 Click on "body", click on "raw", type in the following JSON
@@ -165,8 +161,7 @@ Click on "body", click on "raw", type in the following JSON
 }
 ```
 
-# Download demo app
----
+## Download demo app
 
 Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under $GOPATH
 ```
@@ -177,8 +172,8 @@ $ gulp
 ```
 
 
-# Interact with the demo
----
+## Interact with the demo
+
 Wait until you see "Websocket Up" in the terminal
 Go to localhost:3000 to test the app! :+1:
 
