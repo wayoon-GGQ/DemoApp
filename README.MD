@@ -34,22 +34,9 @@ If you continue with core.autocrlf set to true, the vagrant up command will fail
 ```
 
 
-## Set up chaincode
-
-First clone chaincode from [Github]() into a folder under **$GOPATH/src/github.com**
-
-Once this is done, run the following commands:
-```
-$ cd <to your chain-code path>
-$ mkdir vendor/github.com/hyperledger
-$ cd vendor/github.com/hyperledger
-$ git clone https://github.com/hyperledger/fabric.git
-```
-
-
 ## Set up hyperledger
 
-Run the following commands:
+Open a Terminal (Terminal 1) and run the following commands:
 ```
 $ cd <gopath>
 $ cd src
@@ -58,14 +45,6 @@ $ cd github.com\hyperledger
 $ git clone https://github.com/hyperledger/fabric.git
 ```
 
-Open **membersrvc.yaml** under **hyperledger/fabric/membersrvc**, and uncomment lines *115 and 116* 
-```
-vp0: 4 vp0_secret
-vp1: 4 vp1_secret
-```
-
-
-## Set up development environment
 
 ### Start Vagrant
 ```
@@ -75,19 +54,22 @@ $ vagrant up
 Note: vagrant up could take a while (*10+ minutes*) if it's your first time 
 
 
+### Start up the CA
 Once Vagrant is up and running in Terminal 1, run the following commands:
 
 ```
 $ vagrant ssh
 ```
 
+Open **membersrvc.yaml** under **hyperledger/fabric/membersrvc**, and uncomment lines *115 and 116* 
+```
+vp0: 4 vp0_secret
+vp1: 4 vp1_secret
+```
+
 Once inside vagrant
 ```
 $ cd $GOPATH/src/github.com/hyperledger/fabric
-```
-
-### Start up the CA
-```
 $ make membersrvc && membersrvc
 ```
 
@@ -153,9 +135,7 @@ $ cd $GOPATH/src/github.com/hyperledger/fabric
 $ docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID=vp1 -e CORE_PEER_ADDRESSAUTODETECT=true -e CORE_SECURITY_ENABLED=false -e CORE_SECURITY_PRIVACY=false -e CORE_PEER_PKI_ECA_PADDR=172.17.0.1:50051 -e CORE_PEER_PKI_TCA_PADDR=172.17.0.1:50051 -e CORE_PEER_PKI_TLSCA_PADDR=172.17.0.1:50051 -e CORE_SECURITY_ENROLLID=vp1 -e CORE_SECURITY_ENROLLSECRET=vp1_secret -e CORE_PEER_DISCOVERY_ROOTNODE=172.17.0.2:30303 hyperledger/fabric-peer peer node start
 ```
 
-
-
-## Test API using Postman
+### Test API using Postman
 
 Try a post method using the address: **localhost:5000/registrar**
 Click on **body**, click on **raw**, type in the following JSON string:
@@ -167,11 +147,32 @@ Click on **body**, click on **raw**, type in the following JSON string:
 }
 ```
 
-## Download demo app
 
-Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under your *$GOPATH*
+
+## Set up chaincode
+
+First clone chaincode from [Github]() into a folder under **$GOPATH/src/github.com**
+
+Once this is done, run the following commands:
+```
+$ cd <to your chain-code path>
+$ mkdir vendor/github.com/hyperledger
+$ cd vendor/github.com/hyperledger
+$ git clone https://github.com/hyperledger/fabric.git
+
+$ cd <to your chain-code path>
+$ go build
+```
+
+
+
+## Set up Node.js App
+
+
+Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder. which should not be under *$GOPATH*
 ```
 $ cd <your folder>
+$ npm install npm@latest
 $ npm install
 $ sudo npm install gulp -g
 $ gulp
