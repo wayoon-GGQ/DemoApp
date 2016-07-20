@@ -10,13 +10,14 @@ The read more about CA, please refer to the [hyperledger documentation](http://h
 ## Prerequisites
 
 Make sure to have the following installed/configured on local machine. 
+
 1. [Vagrant (1.7.4 or later)](https://www.vagrantup.com/)
 2. [Virtualbox (5.0, not 5.1)](https://www.virtualbox.org/)
 3. [Go](https://golang.org/)
 4. Setup [$GOPATH environmental variables](https://github.com/golang/go/wiki/GOPATH)
 
 
-### Note to Windows users 
+#### Note to Windows users 
 
 If you are running Windows, before running any git clone commands, run the following commands:
 
