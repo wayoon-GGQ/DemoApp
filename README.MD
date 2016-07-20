@@ -6,6 +6,8 @@ The Certificate Authority (CA) provides a number of certificate services to user
 
 The read more about CA, please refer to the [hyperledger documentation](http://hyperledger-fabric.readthedocs.io/en/latest/). 
 
+To better understand terms used in this demo, please refer to the [glossary](http://hyperledger-fabric.readthedocs.io/en/latest/glossary/).
+
 
 ## Prerequisites
 
@@ -32,7 +34,7 @@ If you continue with core.autocrlf set to true, the vagrant up command will fail
 
 ## Set up chaincode
 
-First clone chaincode from [Github]() into a folder under $GOPATH/src/github.com
+First clone chaincode from [Github]() into a folder under **$GOPATH/src/github.com**
 
 Once this is done, run the following commands:
 ```
@@ -54,7 +56,7 @@ $ cd github.com\hyperledger
 $ git clone https://github.com/hyperledger/fabric.git
 ```
 
-Open membersrvc.yaml under hyperledger/fabric/membersrvc, and uncomment lines 115 and 116 
+Open **membersrvc.yaml** under **hyperledger/fabric/membersrvc**, and uncomment lines *115 and 116* 
 ```
 vp0: 4 vp0_secret
 vp1: 4 vp1_secret
@@ -68,7 +70,7 @@ vp1: 4 vp1_secret
 $ cd $GOPATH/src/github.com/hyperledger/fabric/devenv
 $ vagrant up
 ```
-Note: vagrant up could take a while (10+ minutes) if it's your first time 
+Note: vagrant up could take a while (*10+ minutes*) if it's your first time 
 
 
 Once Vagrant is up and running in Terminal 1, run the following commands:
@@ -123,7 +125,7 @@ Your results might look like this:
 	       valid_lft forever preferred_lft forever
 ```
 
-See your inet address for eth0, in this case it's 10.0.2.15
+See your inet address for **eth0**, in this case it's *10.0.2.15*
 
 Next, make a peer. Run the following commands:
 ```
@@ -153,8 +155,9 @@ $ docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID
 
 ## Test API using Postman
 
-Try a post method using the address: localhost:5000/registrar
-Click on "body", click on "raw", type in the following JSON
+Try a post method using the address: **localhost:5000/registrar**
+Click on "body", click on "raw", type in the following JSON string:
+
 ```json
 {
     "enrollId": "WebAppAdmin",
@@ -164,7 +167,7 @@ Click on "body", click on "raw", type in the following JSON
 
 ## Download demo app
 
-Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under $GOPATH
+Open a new terminal (Terminal 4) and clone this demo app from [Github]() into a folder under your $GOPATH
 ```
 $ cd <your folder>
 $ npm install
